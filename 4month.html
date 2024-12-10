@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>月のカレンダー</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+      background-color: #f4f4f4;
+      overflow: auto;
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      max-width: 1000px;
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      margin-top: 60px;
+    }
+
+    .day {
+      position: relative;
+      background-color: #ddd;
+      border-radius: 8px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .day img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .day-number {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    a:hover .day-number {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .calendar .day:first-child, .calendar .day:nth-child(2), .calendar .day:nth-child(3), .calendar .day:nth-child(4), 
+    .calendar .day:nth-child(5), .calendar .day:nth-child(6), .calendar .day:nth-child(7) {
+      background-color: #ccc;
+      color: #000;
+      font-weight: bold;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+    }
+
+    .title {
+      position:absolute;
+      top: 1%;
+      left: 47%;
+      font-size: 40px;
+    }
+
+    .return, .next {
+    position: absolute;
+    bottom: 20px;  /* 画面サイズが小さくなってもボタンが下部に来るように */
+    font-size: 170%;
+    z-index: 10;  /* 他の要素と重ならないようにする */
+}
+
+    .return {
+        left: 10px;  /* 左側に配置 */
+    }
+
+    .next {
+        right: 10px;  /* 右側に配置 */
+    }
+  </style>
+</head>
+<body>
+
+  <div class ="return">
+    <a href="3month.html">前へ</a>
+  </div>
+<div class ="next">
+  <a href="5month.html">次へ</a>
+</div>
+
+  <div class ="title">４月</div>
+
+  <div class="calendar">
+
+    <div class="day">日</div>
+    <div class="day">月</div>
+    <div class="day">火</div>
+    <div class="day">水</div>
+    <div class="day">木</div>
+    <div class="day">金</div>
+    <div class="day">土</div>
+
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">1</div>
+      <img src="LINE_ALBUM_2024.10.28パピ子_241110_1.jpg" alt="01日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">2</div>
+      <img src="image2.jpg" alt="02日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">3</div>
+      <img src="image3.jpg" alt="03日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">4</div>
+      <img src="image4.jpg" alt="04日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">5</div>
+      <img src="image5.jpg" alt="05日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">6</div>
+      <img src="image6.jpg" alt="06日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">7</div>
+      <img src="image7.jpg" alt="07日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">8</div>
+      <img src="image8.jpg" alt="08日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">9</div>
+      <img src="image9.jpg" alt="09日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">10</div>
+      <img src="image10.jpg" alt="10日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">11</div>
+      <img src="image11.jpg" alt="11日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">12</div>
+      <img src="image12.jpg" alt="12日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">13</div>
+      <img src="image13.jpg" alt="13日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">14</div>
+      <img src="image14.jpg" alt="14日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">15</div>
+      <img src="image15.jpg" alt="15日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">16</div>
+      <img src="image16.jpg" alt="16日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">17</div>
+      <img src="image17.jpg" alt="17日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">18</div>
+      <img src="image18.jpg" alt="18日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">19</div>
+      <img src="image19.jpg" alt="19日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">20</div>
+      <img src="image20.jpg" alt="20日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">21</div>
+      <img src="image21.jpg" alt="21日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">22</div>
+      <img src="image22.jpg" alt="22日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">23</div>
+      <img src="image23.jpg" alt="23日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">24</div>
+      <img src="image24.jpg" alt="24日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">25</div>
+      <img src="image25.jpg" alt="25日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">26</div>
+      <img src="image26.jpg" alt="26日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">27</div>
+      <img src="image27.jpg" alt="27日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">28</div>
+      <img src="image28.jpg" alt="28日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">29</div>
+      <img src="image29.jpg" alt="29日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">30</div>
+      <img src="image30.jpg" alt="30日">
+    </a>
+    <a href="koinu.html" target="_blank" class="day">
+      <div class="day-number">31</div>
+      <img src="image31.jpg" alt="31日">
+    </a>
+  </div>
+
+</body>
+</html>

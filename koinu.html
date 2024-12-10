@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子犬</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+            block-size: 500px;
+        }
+
+        .text {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .input-box {
+            margin-top: 20px;
+            flex-grow: 1;
+            width: 100%;
+        }
+
+        .input-box textarea {
+            padding: 20px;
+            font-size: 18px;
+            width: 100%;
+            resize: none;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        .day {
+            position: absolute;
+            top:130px;
+            left:300px;
+            font-size: 400%;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="file" id="imageInput" accept="image/*" onchange="previewImage()">
+
+    <img id="previewImg" class="img" src="" alt="子犬画像を表示" style="display:none;">
+
+    <div class="input-box">
+        <textarea placeholder="日記を入力"></textarea>
+    </div>
+
+    <div class="day">〇月１日</div>
+
+    <script>
+        function previewImage() {
+            const file = document.getElementById('imageInput').files[0];
+            const preview = document.getElementById('previewImg');
+            const textarea = document.querySelector('textarea');
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+
+                    // 画像の高さを取得してテキストエリアの高さを調整
+                    preview.onload = function() {
+                        const imageHeight = preview.clientHeight;
+                        textarea.style.height = imageHeight + 'px'; // 画像の高さと同じに設定
+                    };
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+
+</body>
+</html>

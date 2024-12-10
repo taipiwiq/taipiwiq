@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APC2024ゼミ</title>
+    <link rel="stylesheet" href="years.css">
+
+</head>
+<body>
+
+  <div id="title">～１歳～</div>
+
+  <div class = "return">
+    <a href ="0years.html">戻る</a>
+  </div>
+
+  <div class = "next">
+    <a href="2years.html">次へ</a>
+  </div>
+
+  <div class="image-grid">
+
+    <a href="https://ipc-group.jp" target="_blank" class="image-container">
+      <img src="LINE_ALBUM_930ピノ_241008_1.jpg" alt="01月">
+      <div class="alt-text">01月</div>
+    </a>
+
+    <a href="https://koinukonekokan.com/?cat=3" target="_blank" class="image-container">
+      <img src="LINE_ALBUM_930ピノ_241008_2.jpg" alt="02月">
+      <div class="alt-text">02月</div>
+    </a>
+
+    <a href="3month.html" target="_blank" class="image-container">
+      <img src="LINE_ALBUM_930ピノ_241008_4.jpg" alt="03月">
+      <div class="alt-text">03月</div>
+    </a>
+
+    <a href="4month.html" target="_blank" class="image-container">
+      <img src="LINE_ALBUM_930ピノ_241008_5.jpg" alt="04月">
+      <div class="alt-text">04月</div>
+    </a>
+
+    <a href="5month.html  " target="_blank" class="image-container">
+      <img src="LINE_ALBUM_2024.9.29ピノ子_241110_1.jpg" alt="05月">
+      <div class="alt-text">05月</div>
+    </a>
+
+    <a href="6month.html" target="_blank" class="image-container">
+      <img src="LINE_ALBUM_2024.9.29ピノ子_241110_2.jpg" alt="06月">
+      <div class="alt-text">06月</div>
+    </a>
+
+    <a href="7month.html" target="_blank" class="image-container">
+      <img src="LINE_ALBUM_2024.10.07 くらら子_241008_1.jpg" alt="07月">
+      <div class="alt-text">07月</div>
+    </a>
+
+    <a href="8month.html" target="_blank" class="image-container">
+      <img src="LINE_ALBUM_2024.10.07 くらら子_241008_2.jpg" alt="08月">
+      <div class="alt-text">08月</div>
+    </a>
+
+    <a href="9month.html" target="_blank" class="image-container">
+      <img src="LINE_ALBUM_2024.10.28グリ子_241110_1.jpg" alt="09月">
+      <div class="alt-text">09月</div>
+    </a>
+
+    <a href="10month.html" target="_blank" class="image-container">
+      <img src="LINE_ALBUM_2024.10.28グリ子_241110_2.jpg" alt="10月">
+      <div class="alt-text">10月</div>
+    </a>
+
+    <a href="11month.html" target="_blank" class="image-container">
+      <img src="LINE_ALBUM_2024.10.28パピ子_241110_1.jpg" alt="11月">
+      <div class="alt-text">11月</div>
+    </a>
+
+    <a href="12month.html" target="_blank" class="image-container">
+      <img src="LINE_ALBUM_2024926 くら子_240927_1.jpg" alt="12月">
+      <div class="alt-text">12月</div>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const images = document.querySelectorAll('.image-container');
+      
+      images.forEach(image => {
+        image.addEventListener('click', function(e) {
+          e.preventDefault();  // リンク遷移を防ぐ
+  
+          const img = this.querySelector('img');
+  
+          // 最初に少し拡大
+          img.style.transition = 'transform 0.3s ease-in-out';  // 最初の拡大
+          img.style.transform = 'scale(1.2)';  // 1.2倍に拡大
+  
+          // 元の大きさに戻す
+          setTimeout(() => {
+            img.style.transition = 'transform 0.3s ease-in-out';  // 元のトランジション
+            img.style.transform = 'scale(1)';  // 元の大きさに戻す
+            
+            // 元の大きさに戻った後に画面いっぱいに拡大
+            setTimeout(() => {
+              img.style.transition = 'transform 1s ease-in-out';  // 次の拡大のためのトランジション
+              img.style.transform = 'scale(10)';  // 画面いっぱいに拡大
+              
+              // アニメーション完了後にページ遷移
+              setTimeout(() => {
+                window.location.href = this.href;
+              }, 850);  // 拡大して遷移
+            }, 1000);  // 元の大きさに戻るタイミング
+          }, 300);  // 元の大きさに戻す
+        });
+      });
+    });
+  </script>
+  
+</body>
+</html>
