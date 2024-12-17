@@ -12,11 +12,11 @@
         }
 
         .lottery-image {
-            width: 900px;
-            height: 800px;
+            width: 100vw; /* ビューの幅に合わせる */
+            height: 100vh; /* ビューの高さに合わせる */
             display: none;
             animation: fadeIn 1s forwards;
-            margin-left:25%
+            object-fit:contain; /* 画像が画面いっぱいに収まるように調整 */
         }
 
         .keihin {
@@ -26,9 +26,8 @@
 </head>
 <body>
     <!-- 景品紹介 -->
-    <h1 class = keihin>景品紹介</h1>
+    <h1 class="keihin">景品紹介</h1>
     <img class="lottery-image" id="prize1" src="LINE_ALBUM_930ピノ_241008_2.jpg" alt="景品1">
-
     <img class="lottery-image" id="prize2" src="LINE_ALBUM_2024.10.07 くらら子_241008_1.jpg" alt="景品2">
 
     <!-- 順次抽選 -->
