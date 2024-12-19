@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lottery</title>
+    <style>
+        /* アニメーションのためのCSS */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .lottery-image {
+            width: 100%;
+            height: 680px;
+            display: none;
+            animation: fadeIn 1s forwards;
+            object-fit: contain; /* 画像が画面いっぱいに収まるように調整 */
+        }
+
+        .keihin {
+            text-align: center;
+            font-size: 2em;
+            margin-top: 20px;
+        }
+
+        .rule {
+            margin-top:100px;
+            text-align: center;
+            font-size: 70px;
+        }
+
+        .box {
+            width: 1500px;
+            height: 650px;
+            border:solid 5px #000;
+            margin-top: 50px;
+            margin-left:175px;
+            font-size: 50px;
+            text-align: center;
+            
+        }
+
+        .color {
+            color:red;
+        }
+
+        /* スマホ対応: 小さな画面向けの調整 */
+        @media (max-width: 600px) {
+            .keihin {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class = "rule">～　ルール説明　～</div>
+    <div class = "box"><p>・これから宝くじの抽選を行います</p>
+                        <p>・受付でお渡しした<span class = "color">宝くじ</span>を準備してください</p>
+                        <p>・当選者には<span class = "color">豪華景品</span>をプレゼントします！！</p>
+    </div>
+
+
+    <!-- 景品紹介 -->
+    <h1 class="keihin">景品紹介</h1>
+    <img class="lottery-image" id="prize1" src="LINE_ALBUM_930ピノ_241008_2.jpg" alt="景品1">
+    <img class="lottery-image" id="prize2" src="LINE_ALBUM_2024.10.07 くらら子_241008_1.jpg" alt="景品2">
+
+    <!-- 順次抽選 -->
+    <div id="lottery">
+        <img class="lottery-image" id="prize3" src="LINE_ALBUM_2024.9.29ピノ子_241110_1.jpg" alt="景品3">
+        <img class="lottery-image" id="prize4" src="LINE_ALBUM_2024.9.29ピノ子_241110_2.jpg" alt="景品4">
+        <img class="lottery-image" id="prize5" src="LINE_ALBUM_2024.10.06 くらら子_241110_3.jpg" alt="景品5">
+    </div>
+
+    <script>
+        // 5秒ごとに順次抽選を表示
+        let currentPrize = 0;
+        const prizes = document.querySelectorAll('.lottery-image');
+        const totalPrizes = prizes.length;
+
+        // 最初に最初の画像を表示
+        prizes[currentPrize].style.display = 'block';
+
+        // 5秒ごとに次の画像を表示
+        function showNextPrize() {
+            prizes[currentPrize].style.display = 'none';  // 現在の画像を非表示に
+            currentPrize = (currentPrize + 1) % totalPrizes;  // 次の画像を表示するためのインデックス
+            prizes[currentPrize].style.display = 'block';  // 次の画像を表示
+        }
+
+        // 5秒ごとに順次表示
+        setInterval(showNextPrize, 5000);
+    </script>
+</body>
+</html>
