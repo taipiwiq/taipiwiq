@@ -57,9 +57,9 @@
 <body>
 
     <div class = "rule">～　ルール説明　～</div>
-    <div class = "box"><p>・これから宝くじの抽選を行います</p>
-                        <p>・受付でお渡しした<span class = "color">宝くじ</span>を準備してください</p>
-                        <p>・当選者には<span class = "color">豪華景品</span>をプレゼントします！！</p>
+    <div class = "box"><p id ="a">・これから宝くじの抽選を行います</p>
+                        <p id ="b">・受付でお渡しした宝くじを準備してください</p>
+                        <p id ="c">・当選者には豪華景品をプレゼントします！！</p>
     </div>
 
 
@@ -76,6 +76,48 @@
     </div>
 
     <script>
+
+var id = ['a','b','c']; //指定するidを全て配列で渡す
+var tx = [];
+var txCount = [];
+var txSp = 70; // テキストの表示速度
+var dly = 0; // 次の文章までの待ち時間
+var count = 0;
+
+window.onload = function(){
+    kamikakushi();
+    countSet();
+    itimozi()
+}
+
+function countSet(){ // 文字数カウントの初期設定
+    for(n=0;n<id.length;n++){
+        txCount[n] = 0;
+    }
+}
+
+
+function kamikakushi(){ // 要素を取得して非表示（opacity:0;）にする
+    for(i=0;i<id.length;i++){
+    id[i] = document.getElementById(id[i]);
+    tx[i] = id[i].firstChild.nodeValue; // 初期の文字列
+    id[i].innerHTML = '';
+  }
+}
+
+function itimozi(){ //　一文字ずつ表示
+    id[count].innerHTML = tx[count].substr( 0, ++txCount[count] ); // テキストの指定した数の間の要素を表示
+  if(tx[count].length != txCount[count]){ // Count が初期の文字列の文字数と同じになるまでループ
+    setTimeout("itimozi()",txSp); // 次の文字へ進む
+  }else{
+  id[count].innerHTML = tx[count].substr( 0, ++txCount[count] ); // テキストの指定した数の間の要素を表示
+    count++; // 次の段落に進む為のカウントアップ
+    if(count != id.length){ // id数が最後なら終了
+    setTimeout("itimozi()",dly); // 次の段落へ進む
+    }
+  }
+}
+
         // 5秒ごとに順次抽選を表示
         let currentPrize = 0;
         const prizes = document.querySelectorAll('.lottery-image');
