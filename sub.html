@@ -11,19 +11,17 @@
             100% { opacity: 1; }
         }
 
-        /* 画面サイズに応じて調整 */
         .lottery-image {
-            width: 100%; /* 横幅は常に100% */
-            height: 680px; /* 高さはアスペクト比を保って自動調整 */
+            width: 100%;
+            height: 680px;
             display: none;
             animation: fadeIn 1s forwards;
             object-fit: contain; /* 画像が画面いっぱいに収まるように調整 */
         }
 
-        /* 景品タイトルのスタイル */
         .keihin {
             text-align: center;
-            font-size: 2em; /* 大きなフォントサイズに設定 */
+            font-size: 2em;
             margin-top: 20px;
         }
 
@@ -51,7 +49,7 @@
         /* スマホ対応: 小さな画面向けの調整 */
         @media (max-width: 600px) {
             .keihin {
-                font-size: 1.5em; /* フォントサイズを小さく */
+                font-size: 1.5em;
             }
         }
     </style>
