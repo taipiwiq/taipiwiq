@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lottery</title>
+    <meta http-equiv="refresh">
+    <title>explanation</title>
     <style>
         /* アニメーションのためのCSS */
         @keyframes fadeIn {
@@ -13,10 +14,10 @@
 
         .lottery-image {
             width: 100%;
-            height: 680px;
+            height: 650px;
             display: none;
             animation: fadeIn 1s forwards;
-            object-fit: contain; /* 画像が画面いっぱいに収まるように調整 */
+            object-fit: contain;
         }
 
         .keihin {
@@ -39,7 +40,10 @@
             margin-left:175px;
             font-size: 50px;
             text-align: center;
-            
+        }
+
+        .text {
+            top:1000px;
         }
 
     </style>
@@ -47,84 +51,59 @@
 <body>
 
     <div class = "rule">～　ルール説明　～</div>
-    <div class = "box"><p id ="a">・これから宝くじの抽選を行います</p>
-                        <p id ="b">・受付でお渡しした宝くじを準備してください</p>
-                        <p id ="c">・当選者には豪華景品をプレゼントします！！</p>
+    <div class = "box"><p class ="text" id ="a">・これから宝くじの抽選を行います</p>
+                        <p class ="text" id ="b">・受付でお渡しした宝くじを準備してください</p>
+                        <p class ="text" id ="c">・抽選は４桁の数字からランダムに行われます</p>
+                        <p class ="text" id ="d">・数字がそろった方は手を挙げて申し出てください</p>
+                        <p class ="text" id ="e">・当選者には豪華景品をプレゼントします！！</p>
     </div>
 
+<script>
 
-    <!-- 景品紹介 -->
-    <h1 class="keihin">景品紹介</h1>
-    <img class="lottery-image" id="prize1" src="LINE_ALBUM_930ピノ_241008_2.jpg" alt="景品1">
-    <img class="lottery-image" id="prize2" src="LINE_ALBUM_2024.10.07 くらら子_241008_1.jpg" alt="景品2">
+    var id = ['a','b','c','d','e']; //指定するidを全て配列で渡す
+    var tx = [];
+    var txCount = [];
+    var txSp = 80; // テキストの表示速度
+    var dly = 1500; // 次の文章までの待ち時間
+    var count = 0;
 
-    <!-- 順次抽選 -->
-    <div id="lottery">
-        <img class="lottery-image" id="prize3" src="LINE_ALBUM_2024.9.29ピノ子_241110_1.jpg" alt="景品3">
-        <img class="lottery-image" id="prize4" src="LINE_ALBUM_2024.9.29ピノ子_241110_2.jpg" alt="景品4">
-        <img class="lottery-image" id="prize5" src="LINE_ALBUM_2024.10.06 くらら子_241110_3.jpg" alt="景品5">
-    </div>
-
-    <script>
-
-var id = ['a','b','c']; //指定するidを全て配列で渡す
-var tx = [];
-var txCount = [];
-var txSp = 70; // テキストの表示速度
-var dly = 0; // 次の文章までの待ち時間
-var count = 0;
-
-window.onload = function(){
-    kamikakushi();
-    countSet();
-    itimozi()
-}
-
-function countSet(){ // 文字数カウントの初期設定
-    for(n=0;n<id.length;n++){
-        txCount[n] = 0;
+    window.onload = function(){
+        kamikakushi();
+        countSet();
+        itimozi()
     }
-}
 
-
-function kamikakushi(){ // 要素を取得して非表示（opacity:0;）にする
-    for(i=0;i<id.length;i++){
-    id[i] = document.getElementById(id[i]);
-    tx[i] = id[i].firstChild.nodeValue; // 初期の文字列
-    id[i].innerHTML = '';
-  }
-}
-
-function itimozi(){ //　一文字ずつ表示
-    id[count].innerHTML = tx[count].substr( 0, ++txCount[count] ); // テキストの指定した数の間の要素を表示
-  if(tx[count].length != txCount[count]){ // Count が初期の文字列の文字数と同じになるまでループ
-    setTimeout("itimozi()",txSp); // 次の文字へ進む
-  }else{
-  id[count].innerHTML = tx[count].substr( 0, ++txCount[count] ); // テキストの指定した数の間の要素を表示
-    count++; // 次の段落に進む為のカウントアップ
-    if(count != id.length){ // id数が最後なら終了
-    setTimeout("itimozi()",dly); // 次の段落へ進む
-    }
-  }
-}
-
-        // 5秒ごとに順次抽選を表示
-        let currentPrize = 0;
-        const prizes = document.querySelectorAll('.lottery-image');
-        const totalPrizes = prizes.length;
-
-        // 最初に最初の画像を表示
-        prizes[currentPrize].style.display = 'block';
-
-        // 5秒ごとに次の画像を表示
-        function showNextPrize() {
-            prizes[currentPrize].style.display = 'none';  // 現在の画像を非表示に
-            currentPrize = (currentPrize + 1) % totalPrizes;  // 次の画像を表示するためのインデックス
-            prizes[currentPrize].style.display = 'block';  // 次の画像を表示
+    function countSet(){ // 文字数カウントの初期設定
+        for(n=0;n<id.length;n++){
+            txCount[n] = 0;
         }
+    }
 
-        // 5秒ごとに順次表示
-        setInterval(showNextPrize, 5000);
+
+    function kamikakushi(){ // 要素を取得して非表示（opacity:0;）にする
+        for(i=0;i<id.length;i++){
+        id[i] = document.getElementById(id[i]);
+        tx[i] = id[i].firstChild.nodeValue; // 初期の文字列
+        id[i].innerHTML = '';
+        }
+    }
+
+    function itimozi(){ //　一文字ずつ表示
+        id[count].innerHTML = tx[count].substr( 0, ++txCount[count] ); // テキストの指定した数の間の要素を表示
+    if(tx[count].length != txCount[count]){ // Count が初期の文字列の文字数と同じになるまでループ
+        setTimeout("itimozi()",txSp); // 次の文字へ進む
+    }else{
+        id[count].innerHTML = tx[count].substr( 0, ++txCount[count] ); // テキストの指定した数の間の要素を表示
+        count++; // 次の段落に進む為のカウントアップ
+        if(count != id.length){ // id数が最後なら終了
+        setTimeout("itimozi()",dly); // 次の段落へ進む
+        }
+    }
+}
+
+        setTimeout(function(){
+  window.location.href = 'sub.html';
+}, 20*1000);
     </script>
 </body>
 </html>
